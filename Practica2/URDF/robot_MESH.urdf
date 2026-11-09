@@ -4,7 +4,7 @@
     <visual>
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
         <geometry>
-            <box size="0.01 0.01 0.01"/>
+            <box size="0.05 0.05 0.05"/>
         </geometry>
         <material name="negro">
             <color rgba="0.0 0.0 0.0 1.0"/>
@@ -15,6 +15,9 @@
 <link name="1_link">
     <visual>
         <origin xyz="0.25 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <!--aquí si le pongo valores al rpy el primer numero 
+        modifica el eje x,y,z DEL PROPIO OBJETO, NO DEL SISTEMA 
+        ABSOLUTO-->
         <geometry>
             <mesh filename="link1.stl" scale="1.66 1 1"/>
         </geometry>
@@ -67,14 +70,20 @@
 </link>
 <!--Información de articulaciones-->
 <joint name="1_joint" type="revolute">
-    <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0.0 0.0"/>
+    <!--Sí le meto al rpz vá a girar sobre el eje del 
+    objeto anterior, osea, que el objeto 0, la caja negra
+    es de referencia y el palo rojo es la misma referencia que
+    la black box, pero si le meto al rpy, gira sobre la 
+    referencia de la black box, rpy="x y z"(primero gira
+    en z , luego y, luego z)-->
     <parent link="0_link"/>
     <child link="1_link"/>
     <axis xyz="0.0 0.0 1"/>
     <limit lower="-3.14" upper="3.14" effort="1.0" velocity="10.0"/>
 </joint>
 <joint name="2_joint" type="revolute">
-    <origin xyz="0.5 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.5 0.0 0.0" rpy="01.5780 0.0 0.0"/>
     <parent link="1_link"/>
     <child link="2_link"/>
     <axis xyz="0.0 0.0 1"/>
