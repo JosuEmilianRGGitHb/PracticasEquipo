@@ -64,7 +64,7 @@
     <visual>
         <origin xyz="0 0 0" rpy="0 -1.578 0"/>
         <geometry>
-            <mesh filename="Mallas/Fixed_Gripper.STL" scale="1.66 1 1"/>
+            <mesh filename="Mallas/Fixed_Gripper.STL" scale="1 1 1"/>
         </geometry>
         <material name="cian">
             <color rgba="0 1 1 1.0"/>
@@ -75,7 +75,7 @@
     <visual>
         <origin xyz="0 0 0" rpy="0 1.578 0"/>
         <geometry>
-            <mesh filename="Mallas/Moving_Jaw.STL" scale="1.66 1 1"/>
+            <mesh filename="Mallas/Moving_Jaw.STL" scale="1 1 1"/>
         </geometry>
         <material name="magenta">
             <color rgba="1 0 1 1.0"/>
@@ -95,12 +95,12 @@
     <origin xyz="0.0 -0.045 0.016" rpy="0.0 0.0 0.0"/>
     <parent link="base_link"/>
     <child link="shoulder_link"/>
-    <axis xyz="0.0 0.0 1"/>
+    <axis xyz="0.0 0.0 -1"/>
     <limit lower="-1.745" upper="1.745" effort="1.0" velocity="10.0"/>
 </joint>
 
 <joint name="upper_arm_joint" type="revolute">
-    <origin xyz="0.0 -0.03 0.1" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 -0.0306 0.10249" rpy="0.0 0.0 0.0"/>
     <parent link="shoulder_link"/>
     <child link="upper_arm"/>
     <axis xyz="1.0 0.0 0"/>
@@ -108,7 +108,7 @@
 </joint>
 
 <joint name="lower_arm_joint" type="revolute">
-    <origin xyz="0.0 0.11 0.03" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 0.11257 0.028" rpy="0.0 0.0 0.0"/>
     <parent link="upper_arm"/>
     <child link="lower_arm"/>
     <axis xyz="1.0 0.0 0"/>
@@ -116,7 +116,7 @@
 </joint>
 
 <joint name="wirst_pitch_joint" type="revolute">
-    <origin xyz="0.0 -0.133 0.005" rpy=".7854 0.0 0.0"/>
+    <origin xyz="0.0 -0.1349 0.0052" rpy=".7854 0.0 0.0"/>
     <parent link="lower_arm"/>
     <child link="wrist_pitch"/>
     <axis xyz="-1.0 0.0 0"/>
@@ -124,7 +124,7 @@
 </joint>
 
 <joint name="fixed_gripper_joint" type="revolute">
-    <origin xyz="0.0 -.061 0.0" rpy="0 0 0"/>
+    <origin xyz="0.0 -.0622 0.0" rpy="0 0 0"/>
     <parent link="wrist_pitch"/>
     <child link="fixed_gripper"/>
     <axis xyz="0 1 0"/>  <!-- este es el eje desde la REFERENCIA DEL HIJO-->
@@ -132,11 +132,11 @@
 </joint>
 
 <joint name="moving_jaw_joint" type="revolute">
-    <origin xyz="0 -.025 -.034" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0 -.0246 -.020283" rpy="0.0 0.0 0.0"/>
     <parent link="fixed_gripper"/>
     <child link="moving_jaw"/>
     <axis xyz="1 0 0"/>
-    <limit lower="-.4014" upper="1.57" effort="1.0" velocity="10.0"/>
+    <limit lower="-.2" upper="1.57" effort="1.0" velocity="10.0"/>
 </joint>
 
 
